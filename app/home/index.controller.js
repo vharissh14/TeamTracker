@@ -21,8 +21,15 @@
     var infowindow = new google.maps.InfoWindow();
    
         var socket = io();
-         
+        setInterval(getNewCords, 5000);
+        function getNewCords(){
+          navigator.geolocation.getCurrentPosition(function(position) {
+      var myLatLng  =new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+console.log("ss :"+myLatLng)      
 socket.emit('connectUser', {nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.teamName});
+          });
+        }
+// socket.emit('connectUser', {nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.teamName});
         socket.on('userList', function(userList){
           $('#messages').text('');
           for (var i = 0; i < userList.length; i++) {

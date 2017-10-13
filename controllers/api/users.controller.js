@@ -26,7 +26,7 @@ function authenticateUser(req, res) {
 }
 
 function registerUser(req, res) {
-  console.log("reg :"+JSON.stringify(req.body))
+  // console.log("reg :"+JSON.stringify(req.body))
   userService.create(req.body)
   .then(function () {
     res.sendStatus(200);
