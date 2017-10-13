@@ -1,5 +1,8 @@
 ﻿require('rootpath')();
 var express = require('express');
+// var redis = require("redis");
+// var subscriber = redis.createClient(6379,'192.168.1.5');
+// var publisher = redis.createClient(6379,'192.168.1.5');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -43,7 +46,6 @@ io.sockets.on('connection', function(clientSocket){
             break;
           }
         }
-  
         if (!foundUser) {
           userInfo["id"] = clientSocket.id;
           userInfo["nickname"] = data.nickname;
@@ -54,7 +56,12 @@ io.sockets.on('connection', function(clientSocket){
           userInfo["team"]=data.team;
           userList.push(userInfo);
         }
-  
+        // console.log("list :"+data)
+        // publisher.publish("example", data);
+        // subscriber.on("message", function(channel, message) {
+        //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
+        //   });
+        //   subscriber.subscribe("examplerep");
         io.emit("userList", userList);
     });
 });
