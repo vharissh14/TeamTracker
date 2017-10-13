@@ -62,10 +62,12 @@ io.sockets.on('connection', function(clientSocket){
         //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
         //   });
         //   subscriber.subscribe("examplerep");
+
+        console.log("userinfo :"+JSON.stringify(userInfo))
         io.emit("userList", userList);
     });
 });
 // start server
 http.listen(3000, function () {
-    console.log('Server listening at http://' + http.address().address + ':' + http.address().port);
+    console.log('Server listening to http://' + http.address().address + ':' + http.address().port);
 });
