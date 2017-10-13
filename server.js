@@ -69,5 +69,5 @@ io.sockets.on('connection', function(clientSocket){
 });
 // start server
 http.listen(3000, function () {
-    console.log('Server listening to http://' + http.address().address + ':' + http.address().port);
+    console.log('Server listening at http://' + http.address().address + ':' + http.address().port);
 });
