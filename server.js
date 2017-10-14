@@ -1,4 +1,5 @@
 ﻿require('rootpath')();
+
 var express = require('express');
 // var redis = require("redis");
 // var subscriber = redis.createClient(6379,'192.168.1.5');
