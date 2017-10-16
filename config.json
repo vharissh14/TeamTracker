@@ -1,5 +1,5 @@
 ﻿{
     "connectionString": "mongodb://localhost:27017/TeamTracker",
-    "apiUrl": "http://localhost:3000/api",
+    "apiUrl": "http://ec2-54-68-164-248.us-west-2.compute.amazonaws.com:3000/api",
     "secret": "elpis"
 }
