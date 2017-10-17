@@ -1,5 +1,3 @@
 echo "This is new one"
-
 echo "this is second"
-
 echo "this is bad commit"
