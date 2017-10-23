@@ -3,6 +3,9 @@ var express = require('express');
 // var redis = require("redis");
 // var subscriber = redis.createClient(6379,'192.168.1.5');
 // var publisher = redis.createClient(6379,'192.168.1.5');
+//anil-test
+//new -test
+//new one
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -67,5 +70,5 @@ io.sockets.on('connection', function(clientSocket){
 });
 // start server
 http.listen(3000, function () {
-    console.log('Server listening at http://' + http.address().address + ':' + http.address().port);
+    console.log('Server Listening to http://' + http.address().address + ':' + http.address().port);
 });

@@ -1,0 +1,8 @@
+echo "This is new one"
+echo "this is second"
+
+echo "this is sample one"
+
+echo "123"
+
+echo "this is bad commit"

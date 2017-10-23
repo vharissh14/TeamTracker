@@ -1,5 +1,21 @@
 ﻿var express = require('express');
 var router = express.Router();
+
+router.use('/', function (req, res, next) {
+    if (req.path !== '/login' && !req.session.token) {
+        return res.redirect('/login?returnUrl=' + encodeURIComponent('/app' + req.path));
+    }
+ 
+    next();
+});
+
+router.use('/', function (req, res, next) {
+    if (req.path !== '/login' && !req.session.token) {
+        return res.redirect('/login?returnUrl=' + encodeURIComponent('/app' + req.path));
+    }
+ 
+    next();
+});
 // use session auth to secure the angular app files
 
 router.use('/', function (req, res, next) {
