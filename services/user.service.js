@@ -6,6 +6,7 @@ var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
+db.bind('team');
 db.bind('session');
 
 
@@ -13,21 +14,24 @@ var service = {};
 
 service.authenticate = authenticate;
 service.getById = getById;
+service.get = get;
+
 service.create = create;
+service.teamDetails = teamDetails;
 service.delete = _delete;
 module.exports = service;
 
-function authenticate(username, password,missionField) {
+function authenticate(username, password, missionField) {
   var deferred = Q.defer();
   db.users.findOne({ username: username }, function (err, user) {
     if (err) deferred.reject(err.name + ': ' + err.message);
     if (user && bcrypt.compareSync(password, user.hash)) {
       // authentication successful
       createUserSession();
-      var userObj={};
-      userObj.username=username;
-      userObj.missionField=missionField;
-      userObj.token=jwt.sign({ sub: user._id }, config.secret)
+      var userObj = {};
+      userObj.username = username;
+      userObj.missionField = missionField;
+      userObj.token = jwt.sign({ sub: user._id }, config.secret)
 
       deferred.resolve(userObj);
     } else {
@@ -36,80 +40,108 @@ function authenticate(username, password,missionField) {
     }
   });
   function createUserSession() {
-    var user={};
-    user.username=username;
-    user.missionField=missionField;
+    var user = {};
+    user.username = username;
+    user.missionField = missionField;
     db.session.insert(
       user,
       function (err, doc) {
         if (err) deferred.reject(err.name + ': ' + err.message);
         deferred.resolve();
       });
-    }
-    return deferred.promise;
   }
+  return deferred.promise;
+}
 
-  function getById(_id) {
-    var deferred = Q.defer();
-    db.users.findById(_id, function (err, user) {
+function getById(_id) {
+  var deferred = Q.defer();
+  db.users.findById(_id, function (err, user) {
+    if (err) deferred.reject(err.name + ': ' + err.message);
+
+    if (user) {
+      // return user (without hashed password)
+      deferred.resolve(_.omit(user, 'hash'));
+    } else {
+      // user not found
+      deferred.resolve();
+    }
+  });
+
+  return deferred.promise;
+}
+
+function get() {
+  var deferred = Q.defer();
+  db.collection("team").find({}).toArray(function(err,user) {
+    if (err) throw err;
+    if (err) deferred.reject(err.name + ': ' + err.message);
+        if (user) {
+          // return user (without hashed password)
+          deferred.resolve(user);
+        } else {
+          // user not found
+          deferred.resolve();
+        }
+  });
+  return deferred.promise;
+}
+
+function create(userParam) {
+  var deferred = Q.defer();
+
+  // validation
+  db.users.findOne(
+    { username: userParam.username },
+    function (err, user) {
       if (err) deferred.reject(err.name + ': ' + err.message);
 
       if (user) {
-        // return user (without hashed password)
-        deferred.resolve(_.omit(user, 'hash'));
+        // username already exists
+        deferred.reject('Username "' + userParam.username + '" is already taken');
       } else {
-        // user not found
-        deferred.resolve();
+        createUser();
       }
     });
 
-    return deferred.promise;
-  }
+  function createUser() {
+    // set user object to userParam without the cleartext password
+    var user = _.omit(userParam, 'password');
+    // add hashed password to user object
+    user.hash = bcrypt.hashSync(userParam.password, 10);
 
-  function create(userParam) {
-    var deferred = Q.defer();
-
-    // validation
-    db.users.findOne(
-      { username: userParam.username },
-      function (err, user) {
+    db.users.insert(
+      user,
+      function (err, doc) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        if (user) {
-          // username already exists
-          deferred.reject('Username "' + userParam.username + '" is already taken');
-        } else {
-          createUser();
-        }
+        deferred.resolve();
       });
+  }
 
-      function createUser() {
-        // set user object to userParam without the cleartext password
-        var user = _.omit(userParam, 'password');
-        // add hashed password to user object
-        user.hash = bcrypt.hashSync(userParam.password, 10);
+  return deferred.promise;
+}
+function teamDetails(userParam) {
 
-        db.users.insert(
-          user,
-          function (err, doc) {
-            if (err) deferred.reject(err.name + ': ' + err.message);
+  var deferred = Q.defer();
+  db.team.insert(
+    userParam,
+    function (err, doc) {
+      if (err) deferred.reject(err.name + ': ' + err.message);
 
-            deferred.resolve();
-          });
-        }
+      deferred.resolve();
+    });
 
-        return deferred.promise;
-      }
+  return deferred.promise;
+}
+function _delete(username) {
+  var deferred = Q.defer();
+  db.session.remove(
+    { username: mongo.helper.toObjectID(username) },
+    function (err) {
+      if (err) deferred.reject(err);
 
-      function _delete(username) {
-    var deferred = Q.defer();
-    db.session.remove(
-        { username: mongo.helper.toObjectID(username) },
-        function (err) {
-            if (err) deferred.reject(err);
+      deferred.resolve();
+    });
 
-            deferred.resolve();
-        });
-
-    return deferred.promise;
+  return deferred.promise;
 }

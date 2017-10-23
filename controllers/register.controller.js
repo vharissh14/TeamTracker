@@ -13,7 +13,34 @@ router.post('/', function (req, res) {
         form: req.body,
         json: true
     }, function (error, response, body) {
-        console.log("err:"+error)
+        if (error) {
+            return res.render('register', { error: 'An error occurred' });
+        }
+        if (response.statusCode !== 200) {
+            return res.render('register', {
+                error: response.body,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                username: req.body.username
+            });
+        }
+
+        // return to login page with success message
+        req.session.success = 'Registration successful';
+        return res.redirect('/login');
+    });
+});
+
+router.post('/team', function (req, res) {
+
+    
+    request.post({
+        url: config.apiUrl + '/users/teamDetails',
+        form: req.body,
+        json: true
+    }, function (error, response, body) {
+        console.log("res :"+JSON.stringify(body))
+        
         if (error) {
             return res.render('register', { error: 'An error occurred' });
         }
@@ -32,5 +59,6 @@ router.post('/', function (req, res) {
         return res.redirect('/login');
     });
 });
+
 
 module.exports = router;

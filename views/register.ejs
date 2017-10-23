@@ -1,37 +1,134 @@
 ﻿<%- include('partials/header') %>
-<div class="form-container">
-    <h2>User Registration</h2>
-    <% if(locals.error) { %>
-        <div class="alert alert-danger"><%= error %></div>
-    <% } %>
-    <form method="post">
-        <div class="form-group">
-            <label for="firstName">Name</label>
-            <input type="text" name="name" id="name" class="form-control" value="<%= locals.ame || '' %>" required />
+    <div class="form-container">
+        <h2>User Registration</h2>
+        <% if(locals.error) { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+            <% } %>
+                <form class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="name">Name</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="name" id="name" class="form-control" value="<%= locals.name || '' %>" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="phone">Phone</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="phone" id="phone" class="form-control" value="<%= locals.phone || '' %>" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="email">Email</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="email" id="email" class="form-control" value="<%= locals.email || '' %>" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="email">Pseudo Name</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="username" id="username" class="form-control" value="<%= locals.username || '' %>" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="teams">Teams</label>
+                        <div class="col-sm-5">
+                            <select class="form-control" id="teams" name="team" required></select>
+                            <!-- <input type="text" class="form-control" id="email" name="email"> -->
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="icon">Team Icon</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="icon" name="icon">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="email">Password</label>
+                        <div class="col-sm-5">
+                            <input type="password" name="password" id="password" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <a href="/login" class="btn btn-link">Cancel</a>
+                    </div>
+                </form>
+
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Team Details</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="teamForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="teamName">Team Name</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="teamName" id="teamName" class="form-control" value="<%= locals.name || '' %>" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="teamIcon">Team Icon</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="teamIcon" id="teamIcon" class="form-control" value="<%= locals.username || '' %>" required />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="teamss" type="submit" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+
+                </div>
+            </div>
+
         </div>
-        <div class="form-group">
-            <label for="lastName">Phone</label>
-            <input type="text" name="phone" id="phone" class="form-control" value="<%= locals.phone || '' %>" required />
-        </div>
-        <div class="form-group">
-            <label for="firstName">Email</label>
-            <input type="text" name="email" id="email" class="form-control" value="<%= locals.email || '' %>" required />
-        </div>
-        <div class="form-group">
-            <label for="username">Pseudoname</label>
-            <input type="text" name="username" id="username" class="form-control" value="<%= locals.username || '' %>" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Team Name</label>
-            <input type="text" name="teamName" id="teamName" class="form-control" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control" required />
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Register</button>
-            <a href="/login" class="btn btn-link">Cancel</a>
-        </div>
-    </form>
-</div>
+    </div>
+
+    <script>
+        function getTeamDetails(){
+            $.get("api/users/team", function (data) {
+                            var sel = document.getElementById('teams');
+                            $("#teams").empty();                            
+                            for (var i = 0; i < data.length; i++) {
+                                var opt = document.createElement('option');
+                                opt.innerHTML = data[i].teamName;
+                                opt.value = data[i].teamIcon;
+                                sel.appendChild(opt);
+                            }
+                            $("#teams").on("change", function () {
+                                $("#icon").val($(this).val());
+                            })
+
+                        });
+        }
+        $(function () {
+            getTeamDetails();
+            $('#teamss').on('click', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'register/team', //this is the submit URL
+                    type: 'POST', //or POST
+                    data: $('#teamForm').serialize(),
+                    success: function (data) {
+                        getTeamDetails()
+                        $('#myModal').modal('hide');
+                    }
+                });
+            });
+        });
+    </script>

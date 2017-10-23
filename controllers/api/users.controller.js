@@ -6,7 +6,11 @@ var userService = require('services/user.service');
 // routes
 router.post('/authenticate', authenticateUser);
 router.post('/register', registerUser);
+router.post('/teamDetails', teamDetails);
+
 router.get('/current', getCurrentUser);
+router.get('/team', teamInfo);
+
 module.exports = router;
 
 function authenticateUser(req, res) {
@@ -36,9 +40,42 @@ function registerUser(req, res) {
   });
 }
 
+function teamDetails(req, res) {
+  userService.teamDetails(req.body)
+  .then(function () {
+    if(res.statusCode==200){
+      userService.get().then(function (user) {
+        if (user) {
+         console.log("user :"+JSON.stringify(user))
+        } else {
+         
+        }
+      })
+    }
+    res.sendStatus(200);
+  })
+  .catch(function (err) {
+    res.status(400).send(err);
+  });
+}
+
 function getCurrentUser(req, res) {
-  console.log(req.user.sub)
   userService.getById(req.user.sub)
+  .then(function (user) {
+    if (user) {
+      res.send(user);
+    } else {
+      res.sendStatus(404);
+    }
+  })
+  .catch(function (err) {
+    res.status(400).send(err);
+  });
+}
+
+function teamInfo(req, res) {
+  //  res.send("hi123")
+ userService.get()
   .then(function (user) {
     if (user) {
       res.send(user);

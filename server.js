@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
 
 // use JWT auth to secure the api
-app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
+app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register','/api/users/teamDetails','/api/users/team','/api/users/team1'] }));
 
 // routes
 app.use('/login', require('./controllers/login.controller'));
@@ -40,23 +40,21 @@ io.sockets.on('connection', function(clientSocket){
         for (var i=0; i<userList.length; i++) {
           if (userList[i]["nickname"] == data.nickname) {
             userList[i]["isConnected"] = true
-            userList[i]["id"] = clientSocket.id;
             userInfo = userList[i];
             foundUser = true;
             break;
           }
         }
         if (!foundUser) {
-          userInfo["id"] = clientSocket.id;
           userInfo["nickname"] = data.nickname;
           userInfo["isConnected"] = true;
           userInfo["lat"]=data.lat;
           userInfo["phone"]=data.phone;
           userInfo["email"]=data.email;
           userInfo["team"]=data.team;
+          userInfo["icon"]=data.icon;
           userList.push(userInfo);
         }
-        // console.log("list :"+data)
         // publisher.publish("example", data);
         // subscriber.on("message", function(channel, message) {
         //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")

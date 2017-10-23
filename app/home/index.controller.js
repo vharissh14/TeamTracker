@@ -7,6 +7,8 @@
       UserService.GetCurrent().then(function (user) {
         $scope.user = user;
         userObj=user;
+        console.log("current :"+angular.toJson(userObj.icon))
+        
       });
     }
     navigator.geolocation.getCurrentPosition(function(pos){
@@ -21,22 +23,28 @@
     var infowindow = new google.maps.InfoWindow();
    
         var socket = io();
-        setInterval(getNewCords, 5000);
+        socket.emit('create', userObj.name);
+        setInterval(getNewCords, 2000);
         function getNewCords(){
           navigator.geolocation.getCurrentPosition(function(position) {
       var myLatLng  =new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-console.log("ss :"+myLatLng)      
-socket.emit('connectUser', {nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.teamName});
+socket.emit('connectUser', {nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.team,icon:userObj.icon});
           });
         }
 // socket.emit('connectUser', {nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.teamName});
         socket.on('userList', function(userList){
           $('#messages').text('');
           for (var i = 0; i < userList.length; i++) {
+            console.log("icon:"+userList[i].icon)
+            var image = {
+              url: userList[i].icon,
+              scaledSize : new google.maps.Size(34, 32),
+          };
             $('#messages').append($('<li>').text(userList[i].nickname));
                     var newMarker = new google.maps.Marker({
                         position: new google.maps.LatLng(userList[i].lat.lat, userList[i].lat.lng),
-                        map: map
+                        map: map,
+                        icon:image
                     });
 
                     google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
