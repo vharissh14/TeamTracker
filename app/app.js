@@ -31,8 +31,7 @@
     $(function () {
         // get JWT token from server
         $.get('/app/token', function (token) {
-            window.jwtToken = token;
-
+            window.jwtToken = token.token;
             angular.bootstrap(document, ['app']);
         });
     });

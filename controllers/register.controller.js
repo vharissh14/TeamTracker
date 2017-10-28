@@ -39,7 +39,6 @@ router.post('/team', function (req, res) {
         form: req.body,
         json: true
     }, function (error, response, body) {
-        console.log("res :"+JSON.stringify(body))
         
         if (error) {
             return res.render('register', { error: 'An error occurred' });

@@ -32,7 +32,6 @@ function authenticate(username, password, missionField) {
       userObj.username = username;
       userObj.missionField = missionField;
       userObj.token = jwt.sign({ sub: user._id }, config.secret)
-
       deferred.resolve(userObj);
     } else {
       // authentication failed
@@ -145,3 +144,40 @@ function _delete(username) {
 
   return deferred.promise;
 }
+
+
+// var userData={};
+// var flag=0;
+// var rooms=[];
+// io.sockets.on('connection', function(socket){
+//     socket.on('subscribe', function(data) { 
+//         socket.join(data.mission); 
+        
+//         for (var i=0;i<rooms.length;i++){
+//             flag=0;
+//             if(data.mission==rooms[i]){
+//                 flag=1;   
+//             }
+//         }
+
+//         var users=[];
+//         if(flag!=0){
+//             console.log("in")
+//             var oldData = userData[data.mission]
+//             users.push(oldData)
+//             users.push(data);
+//             userData[data.mission]=users  
+//         }
+//         if(flag==0){
+//             rooms.push(data.mission);
+//             userData[data.mission]=data;
+//             users.push(data);
+//             flag=1;
+//         }
+        
+        
+//         console.log("users :"+JSON.stringify(users))
+
+//          io.sockets.to(data.mission).emit('userList', users);
+//     })
+// });
