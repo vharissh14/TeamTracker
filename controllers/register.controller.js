@@ -8,6 +8,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
+    console.log("bo :"+JSON.stringify(req.body))
     request.post({
         url: config.apiUrl + '/users/register',
         form: req.body,

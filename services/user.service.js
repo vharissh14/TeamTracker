@@ -104,6 +104,7 @@ function create(userParam) {
 
   function createUser() {
     // set user object to userParam without the cleartext password
+
     var user = _.omit(userParam, 'password');
     // add hashed password to user object
     user.hash = bcrypt.hashSync(userParam.password, 10);
@@ -120,7 +121,7 @@ function create(userParam) {
   return deferred.promise;
 }
 function teamDetails(userParam) {
-
+console.log(userParam)
   var deferred = Q.defer();
   db.team.insert(
     userParam,

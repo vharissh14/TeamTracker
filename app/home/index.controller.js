@@ -27,7 +27,7 @@
     });
     var infowindow = new google.maps.InfoWindow();
     var socket = io.connect();
-//         setInterval(getNewCords, 2000);
+        setInterval(getNewCords, 5000);
 //         function getNewCords(){
 //           navigator.geolocation.getCurrentPosition(function(position) {
 //       var myLatLng  =new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -35,7 +35,7 @@
 // // socket.emit('connectUser', {nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.team,icon:userObj.icon});
 //           });
 //         }
-      socket.emit('subscribe',{nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.team,icon:userObj.icon,mission:room}) ;     ;
+        socket.emit('subscribe',{nickname:userObj.name,lat:myLatLng,phone:userObj.phone,email:userObj.email,team:userObj.team,icon:userObj.icon,mission:room}) ;     ;
       
         socket.on('userList', function(userList){
           $('#messages').text('');

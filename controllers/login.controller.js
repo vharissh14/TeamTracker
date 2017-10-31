@@ -23,7 +23,6 @@ router.get('/', function (req, res) {
   }
 });
 
-
 router.post('/', function (req, res) {
   // authenticate using api to maintain clean separation between layers
   request.post({
