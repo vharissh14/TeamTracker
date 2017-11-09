@@ -14,14 +14,14 @@ router.get('/team', teamInfo);
 module.exports = router;
 
 function authenticateUser(req, res) {
-  userService.authenticate(req.body.username, req.body.password,req.body.missionField)
+  userService.authenticate(req.body.pseudoName, req.body.password,req.body.mission)
   .then(function (token) {
     if (token) {
       // authentication successful
       res.send(token);
     } else {
       // authentication failed
-      res.status(401).send('Username or password is incorrect');
+      res.status(401).send('pseudoName or password is incorrect');
     }
   })
   .catch(function (err) {
@@ -43,15 +43,6 @@ function registerUser(req, res) {
 function teamDetails(req, res) {
   userService.teamDetails(req.body)
   .then(function () {
-    if(res.statusCode==200){
-      userService.get().then(function (user) {
-        if (user) {
-         console.log("user :"+JSON.stringify(user))
-        } else {
-         
-        }
-      })
-    }
     res.sendStatus(200);
   })
   .catch(function (err) {

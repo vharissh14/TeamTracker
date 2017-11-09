@@ -21,16 +21,16 @@ service.teamDetails = teamDetails;
 service.delete = _delete;
 module.exports = service;
 
-function authenticate(username, password, missionField) {
+function authenticate(pseudoName, password, mission) {
   var deferred = Q.defer();
-  db.users.findOne({ username: username }, function (err, user) {
+  db.users.findOne({ pseudoName: pseudoName }, function (err, user) {
     if (err) deferred.reject(err.name + ': ' + err.message);
     if (user && bcrypt.compareSync(password, user.hash)) {
       // authentication successful
       createUserSession();
       var userObj = {};
-      userObj.username = username;
-      userObj.missionField = missionField;
+      userObj.pseudoName = pseudoName;
+      userObj.mission = mission;
       userObj.token = jwt.sign({ sub: user._id }, config.secret)
       deferred.resolve(userObj);
     } else {
@@ -40,8 +40,8 @@ function authenticate(username, password, missionField) {
   });
   function createUserSession() {
     var user = {};
-    user.username = username;
-    user.missionField = missionField;
+    user.pseudoName = pseudoName;
+    user.mission = mission;
     db.session.insert(
       user,
       function (err, doc) {
@@ -90,13 +90,13 @@ function create(userParam) {
 
   // validation
   db.users.findOne(
-    { username: userParam.username },
+    { pseudoName: userParam.pseudoName },
     function (err, user) {
       if (err) deferred.reject(err.name + ': ' + err.message);
 
       if (user) {
-        // username already exists
-        deferred.reject('Username "' + userParam.username + '" is already taken');
+        // pseudoName already exists
+        deferred.reject('pseudoName "' + userParam.pseudoName + '" is already taken');
       } else {
         createUser();
       }
@@ -121,7 +121,6 @@ function create(userParam) {
   return deferred.promise;
 }
 function teamDetails(userParam) {
-console.log(userParam)
   var deferred = Q.defer();
   db.team.insert(
     userParam,
@@ -133,10 +132,10 @@ console.log(userParam)
 
   return deferred.promise;
 }
-function _delete(username) {
+function _delete(pseudoName) {
   var deferred = Q.defer();
   db.session.remove(
-    { username: mongo.helper.toObjectID(username) },
+    { pseudoName: mongo.helper.toObjectID(pseudoName) },
     function (err) {
       if (err) deferred.reject(err);
 

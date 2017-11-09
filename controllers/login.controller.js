@@ -12,8 +12,8 @@ router.get('/', function (req, res) {
   delete req.session.success;
 
   res.render('login');
-  if(req.session.username){
-    userService.delete(req.session.username)
+  if(req.session.pseudoName){
+    userService.delete(req.session.pseudoName)
     .then(function () {
       res.sendStatus(200);
     })
@@ -34,15 +34,15 @@ router.post('/', function (req, res) {
       return res.render('login', { error: 'An error occurred' });
     }
     if (!body.token) {
-      return res.render('login', { error: body, username: req.body.username });
+      return res.render('login', { error: body, pseudoName: req.body.pseudoName });
     }
-
     // save JWT token in the session to make it available to the angular app
     req.session.token = body.token;
-    req.session.username = body.username;
-    req.session.missionField = body.missionField;
+    req.session.pseudoName = body.pseudoName;
+    req.session.mission = body.mission;
     // redirect to returnUrl
-    var returnUrl = req.query.returnUrl && decodeURIComponent(req.query.returnUrl) || '/';
+    var returnUrl='/';
+    // var returnUrl = req.query.returnUrl && decodeURIComponent(req.query.returnUrl) || '/';
     res.redirect(returnUrl);
   });
 });

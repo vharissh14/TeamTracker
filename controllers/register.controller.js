@@ -8,7 +8,6 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    console.log("bo :"+JSON.stringify(req.body))
     request.post({
         url: config.apiUrl + '/users/register',
         form: req.body,
@@ -22,7 +21,7 @@ router.post('/', function (req, res) {
                 error: response.body,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                username: req.body.username
+                pseudoName: req.body.pseudoName
             });
         }
 
@@ -33,14 +32,12 @@ router.post('/', function (req, res) {
 });
 
 router.post('/team', function (req, res) {
-
-    
     request.post({
         url: config.apiUrl + '/users/teamDetails',
         form: req.body,
         json: true
     }, function (error, response, body) {
-        
+console.log("res :"+response.statusCode)
         if (error) {
             return res.render('register', { error: 'An error occurred' });
         }
@@ -50,12 +47,9 @@ router.post('/team', function (req, res) {
                 error: response.body,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                username: req.body.username
+                pseudoName: req.body.pseudoName
             });
         }
-
-        // return to login page with success message
-        req.session.success = 'Registration successful';
         return res.redirect('/login');
     });
 });
