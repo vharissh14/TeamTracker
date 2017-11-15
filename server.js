@@ -1,8 +1,8 @@
 ﻿require('rootpath')();
 var express = require('express');
-// var redis = require("redis");
-// var subscriber = redis.createClient(6379,'192.168.1.5');
-// var publisher = redis.createClient(6379,'192.168.1.5');
+var redis = require("redis");
+var subscriber = redis.createClient(6379,'192.168.1.5');
+var publisher = redis.createClient(6379,'192.168.1.5');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -36,7 +36,7 @@ var userList = [];
 io.sockets.on('connection', function (socket) {
     var room;
     socket.on('subscribe', function (data) {
-        room=data.mission;
+        room = data.mission;
         // console.log("room"+JSON.stringify(data.mission))
         socket.join(data.mission);
         var foundUser = false;
@@ -47,9 +47,9 @@ io.sockets.on('connection', function (socket) {
                 break;
             }
         }
-        var roomUsers=[];        
+        var roomUsers = [];
         if (!foundUser) {
-            socket.user=data;
+            socket.user = data;
             userList.push(data);
         }
         for (var i = 0; i < userList.length; i++) {
@@ -57,25 +57,30 @@ io.sockets.on('connection', function (socket) {
                 roomUsers.push(userList[i])
             }
         }
-console.log("users :"+JSON.stringify(roomUsers))
+        publisher.publish("example", roomUsers);
+        subscriber.on("message", function(channel, message) {
+            console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
+          });
+          subscriber.subscribe("examplerep");
+        console.log("users :" + JSON.stringify(roomUsers))
         io.sockets.to(data.mission).emit('userList', roomUsers);
     })
-    socket.on('disconnect', function(){
+    socket.on('disconnect', function () {
         console.log('user disconnected');
-        console.log("disconnect :"+JSON.stringify(socket.user))
-        
+        console.log("disconnect :" + JSON.stringify(socket.user))
+
         var index = userList.indexOf(socket.user);
         userList.splice(index, 1);
-var rooms=[];
+        var rooms = [];
         for (var i = 0; i < userList.length; i++) {
-            if (userList[i].mission ==room) {
+            if (userList[i].mission == room) {
                 rooms.push(userList[i])
             }
         }
-             console.log("out :"+JSON.stringify(rooms))
-        io.sockets.to(room).emit('userList', rooms);        
-    
-      });
+        console.log("out :" + JSON.stringify(rooms))
+        io.sockets.to(room).emit('userList', rooms);
+
+    });
 
     socket.on('locationChanged', function (data) {
         io.sockets.emit('locationUpdate', data);

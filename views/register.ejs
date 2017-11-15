@@ -37,7 +37,6 @@
                         <label class="control-label col-sm-4" for="teams">Teams</label>
                         <div class="col-sm-5">
                             <select class="form-control" id="teams" name="teams" required></select>
-                            <!-- <input type="text" class="form-control" id="email" name="email"> -->
                         </div>
                         <div class="col-sm-3">
                             <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
@@ -48,7 +47,8 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="teamIcon">Team Icon</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="teamIcon" name="teamIcon" readonly>
+                                <input type="text" class="form-control" id="teamIcon" name="teamIcon" readonly style="display:none;">                                
+                                <img id='teamIcon' src='one.jpg' height="100" width="200">
                         </div>
                     </div>
                     <div class="form-group">
@@ -108,11 +108,21 @@
                 for (var i = 0; i < data.length; i++) {
                     var opt = document.createElement('option');
                     opt.innerHTML = data[i].teamName;
-                    opt.value = data[i].teamIcon;
+                    opt.value = data[i].teamName;
                     sel.appendChild(opt);
                 }
                 $("#teams").on("change", function () {
-                    $("#teamIcon").val($(this).val());
+                 for(var i=0;i<data.length;i++){
+                     if(data[i].teamName==$(this).val()){
+                    $("#teamIcon").val(data[i].teamIcon);
+                    $('#teamIcon').attr('src', data[i].teamIcon);
+                     }
+                 }
+                    // $("#teamIcon").val($(this).val());
+                    // var ss=$("#teams option:selected").text();
+                    // $("#teams").val(ss);
+                    
+                    // alert($("#teams option:selected").text());                    
                 })
 
             });

@@ -5,8 +5,20 @@
     <title>Team Tracker Application</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!-- Place this tag where you want the share button to render. -->
 </head>
 <body class="container">
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1709044802493182';
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     <!-- header -->
     <header>
         <ul class="nav nav-tabs">
@@ -14,7 +26,14 @@
             <li><a href="/login" target="_self">Logout</a></li>
         </ul>
     </header>
-
+    <!-- <div class="g-plus" data-action="share" data-height="24" data-href="https://teamtracker.riverway.in"></div> -->
+    <span>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class="g-plus" data-action="share" data-height="24" data-href="https://teamtracker.riverway.in"></div>
+            
+            <div class="fb-share-button" data-href="https://teamtracker.riverway.in" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteamtracker.riverway.in%2F&amp;src=sdkpreparse">Share</a></div>
+            
+        </span>
     <!-- main -->
     <main ui-view></main>
 

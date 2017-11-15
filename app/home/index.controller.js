@@ -16,7 +16,31 @@
       });
     }
     function getCurrentUser() {
+    //   function hasUserMedia() { 
+    //     //check if the browser supports the WebRTC 
+    //     return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || 
+    //        navigator.mozGetUserMedia); 
+    //  } 
+     
+    //  if (hasUserMedia()) { 
+    //     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
+    //        || navigator.mozGetUserMedia; 
+         
+    //     //enabling video and audio channels 
+    //     navigator.getUserMedia({ video: true, audio: true }, function (stream) { 
+    //        var video = document.querySelector('video'); 
+         
+    //        //inserting our stream to the video tag     
+    //        video.src = window.URL.createObjectURL(stream); 
+    //     }, function (err) {}); 
+    //  } else { 
+    //     alert("WebRTC is not supported"); 
+    //  }
 
+
+
+
+     
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (pos) {
           myLatLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
@@ -31,19 +55,24 @@
             user.lat = myLatLng;
             user.mission = room;
             socket.emit('subscribe', user);
-            setInterval(getNewCords, 5000);
+            setInterval(getNewCords, 1000);
           });
           var infowindow = new google.maps.InfoWindow();
 
           socket.on('userList', function (userList) {
-            // console.log("users:" + angular.toJson(userList))
             for (var i = 0; i < markers.length; i++) {
               markers[i].setMap(null);
             }
             users = userList;
             for (var i = 0; i < userList.length; i++) {
+              var image;
+              if(userList[i].teamIcon.includes("http")){
+                 image=userList[i].teamIcon;
+              }else{
+                 image="http://www.freeiconspng.com/uploads/profile-icon-9.png"
+              }
               var image = {
-                url: userList[i].teamIcon,
+                url:image,
                 scaledSize: new google.maps.Size(52, 52),
               };
               marker[userList[i].pseudoName] = new google.maps.Marker({
@@ -77,10 +106,12 @@
                     '</tr>' +
                     '<tr>' +
                     '<td>TeamName</td>' +
-                    '<td>' + userList[i].team + '</td>' +
+                    '<td>' + userList[i].teams + '</td>' +
                     '</tr>' +
                     '</tbody>' +
                     '</table>' +
+                    '<div class="fb-share-button" data-href="https://teamtracker.riverway.in" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteamtracker.riverway.in%2F&amp;src=sdkpreparse">Share</a></div>'+
+                    
                     '</div>' +
                     '</div>' +
                     '</div>'
@@ -109,7 +140,6 @@
         userObj.pseudoName = currentUser.pseudoName
         socket.emit('locationChanged', userObj);
         socket.on('locationUpdate', function (user) {
-          console.log("newLocation :" + Date() + " : " + angular.toJson(user))
           var position = new google.maps.LatLng(user.lat.lat, user.lat.lng);
           marker[user.pseudoName].setPosition(position);
         });
