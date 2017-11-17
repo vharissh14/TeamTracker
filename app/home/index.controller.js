@@ -131,19 +131,44 @@
       }
 
     }
-
+    var watchID;
     function getNewCords() {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      function showLocation(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var myLatLng={};
+        myLatLng.lat=latitude;
+        myLatLng.lng=longitude;
         var userObj = {}
         userObj.lat = myLatLng;
         userObj.pseudoName = currentUser.pseudoName
         socket.emit('locationChanged', userObj);
         socket.on('locationUpdate', function (user) {
+          console.log(angular.toJson(user))
           var position = new google.maps.LatLng(user.lat.lat, user.lat.lng);
           marker[user.pseudoName].setPosition(position);
         });
-      });
+     }
+// if(navigator.geolocation){
+//                // timeout at 60000 milliseconds (60 seconds)
+//                var options = {timeout:60000};
+//                geoLoc = navigator.geolocation;
+//                watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
+//             }
+            
+//             else{
+//                alert("Sorry, browser does not support geolocation!");
+//             }
+
+
+        if(navigator.geolocation){
+           watchID = navigator.geolocation.watchPosition(showLocation);
+
+        // var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     
+
+       }
+       
     }
 
 

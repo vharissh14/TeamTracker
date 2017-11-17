@@ -1,8 +1,8 @@
 ﻿require('rootpath')();
 var express = require('express');
-var redis = require("redis");
-var subscriber = redis.createClient(6379,'192.168.1.5');
-var publisher = redis.createClient(6379,'192.168.1.5');
+// var redis = require("redis");
+// var subscriber = redis.createClient(6379,'192.168.1.5');
+// var publisher = redis.createClient(6379,'192.168.1.5');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -57,11 +57,12 @@ io.sockets.on('connection', function (socket) {
                 roomUsers.push(userList[i])
             }
         }
-        publisher.publish("example", roomUsers);
-        subscriber.on("message", function(channel, message) {
-            console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
-          });
-          subscriber.subscribe("examplerep");
+        console.log("data :"+JSON.stringify(roomUsers))
+        // publisher.publish("example", roomUsers);
+        // subscriber.on("message", function(channel, message) {
+        //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
+        //   });
+        //   subscriber.subscribe("examplerep");
         console.log("users :" + JSON.stringify(roomUsers))
         io.sockets.to(data.mission).emit('userList', roomUsers);
     })
