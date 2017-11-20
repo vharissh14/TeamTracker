@@ -109,9 +109,7 @@
                     '<td>' + userList[i].teams + '</td>' +
                     '</tr>' +
                     '</tbody>' +
-                    '</table>' +
-                    '<div class="fb-share-button" data-href="https://teamtracker.riverway.in" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteamtracker.riverway.in%2F&amp;src=sdkpreparse">Share</a></div>'+
-                    
+                    '</table>' +                    
                     '</div>' +
                     '</div>' +
                     '</div>'
@@ -149,24 +147,9 @@
           marker[user.pseudoName].setPosition(position);
         });
      }
-// if(navigator.geolocation){
-//                // timeout at 60000 milliseconds (60 seconds)
-//                var options = {timeout:60000};
-//                geoLoc = navigator.geolocation;
-//                watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
-//             }
-            
-//             else{
-//                alert("Sorry, browser does not support geolocation!");
-//             }
-
-
+     
         if(navigator.geolocation){
            watchID = navigator.geolocation.watchPosition(showLocation);
-
-        // var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-     
-
        }
        
     }

@@ -3,13 +3,7 @@ var _ = require('lodash');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
-var mongo = require('mongoskin');
-var db = mongo.db(config.connectionString, { native_parser: true });
-db.bind('users');
-db.bind('team');
-db.bind('session');
-
-
+var mongoService = require('services/mongoService');
 var service = {};
 
 service.authenticate = authenticate;
@@ -23,7 +17,7 @@ module.exports = service;
 
 function authenticate(pseudoName, password, mission) {
   var deferred = Q.defer();
-  db.users.findOne({ pseudoName: pseudoName }, function (err, user) {
+  mongoService.db.users.findOne({ pseudoName: pseudoName }, function (err, user) {
     if (err) deferred.reject(err.name + ': ' + err.message);
     if (user && bcrypt.compareSync(password, user.hash)) {
       // authentication successful
@@ -42,7 +36,7 @@ function authenticate(pseudoName, password, mission) {
     var user = {};
     user.pseudoName = pseudoName;
     user.mission = mission;
-    db.session.insert(
+    mongoService.db.session.insert(
       user,
       function (err, doc) {
         if (err) deferred.reject(err.name + ': ' + err.message);
@@ -54,7 +48,7 @@ function authenticate(pseudoName, password, mission) {
 
 function getById(_id) {
   var deferred = Q.defer();
-  db.users.findById(_id, function (err, user) {
+  mongoService.db.users.findById(_id, function (err, user) {
     if (err) deferred.reject(err.name + ': ' + err.message);
 
     if (user) {
@@ -71,7 +65,7 @@ function getById(_id) {
 
 function get() {
   var deferred = Q.defer();
-  db.collection("team").find({}).toArray(function(err,user) {
+  mongoService.db.collection("team").find({}).toArray(function(err,user) {
     if (err) throw err;
     if (err) deferred.reject(err.name + ': ' + err.message);
         if (user) {
@@ -87,9 +81,8 @@ function get() {
 
 function create(userParam) {
   var deferred = Q.defer();
-
   // validation
-  db.users.findOne(
+  mongoService.db.users.findOne(
     { pseudoName: userParam.pseudoName },
     function (err, user) {
       if (err) deferred.reject(err.name + ': ' + err.message);
@@ -109,7 +102,7 @@ function create(userParam) {
     // add hashed password to user object
     user.hash = bcrypt.hashSync(userParam.password, 10);
 
-    db.users.insert(
+    mongoService.db.users.insert(
       user,
       function (err, doc) {
         if (err) deferred.reject(err.name + ': ' + err.message);
@@ -122,7 +115,7 @@ function create(userParam) {
 }
 function teamDetails(userParam) {
   var deferred = Q.defer();
-  db.team.insert(
+  mongoService.db.team.insert(
     userParam,
     function (err, doc) {
       if (err) deferred.reject(err.name + ': ' + err.message);
@@ -134,7 +127,7 @@ function teamDetails(userParam) {
 }
 function _delete(pseudoName) {
   var deferred = Q.defer();
-  db.session.remove(
+  mongoService.db.session.remove(
     { pseudoName: mongo.helper.toObjectID(pseudoName) },
     function (err) {
       if (err) deferred.reject(err);
