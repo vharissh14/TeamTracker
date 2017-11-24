@@ -1,6 +1,11 @@
 ﻿{
+<<<<<<< HEAD
     "connectionString": "mongodb://mongo:27017/TeamTracker",
     "apiUrl": "http://localhost:3000/api",
+=======
+    "connectionString": "mongodb://localhost:27017/TeamTracker",
+    "apiUrl": "http://18.216.65.52:3000/api",
+>>>>>>> 4e4612ec76d1d7eb557a292873e9def86468fa20
     "secret": "elpis",
     "db":{
         "user":"users",
