@@ -35,4 +35,21 @@
             angular.bootstrap(document, ['app']);
         });
     });
+
+    $(document).ready(function(){
+        
+            $('#scroll-top-div').on('click', function (e) {
+                e.preventDefault();
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 700);
+            });
+        
+        });
+        
+        
+        jQuery(window).on('load',function() {
+            jQuery(".cube-wrapper").delay(3000).fadeOut();
+            jQuery(".preloader-body").delay(4000).fadeOut();
+        })
 })();

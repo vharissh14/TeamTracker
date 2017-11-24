@@ -1,46 +1,71 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Team Tracker Application</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home | TeamTracker</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Place this tag in your head or just before your close body tag. -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href="css/style.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+</head><!--/head-->
 
-<!-- Place this tag where you want the share button to render. -->
-</head>
-<body class="container">
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1709044802493182';
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-    <!-- header -->
-    <header>
-        <ul class="nav nav-tabs">
-            <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
-            <li><a href="/login" target="_self">Logout</a></li>
-        </ul>
-    </header>
-    <!-- <div class="g-plus" data-action="share" data-height="24" data-href="https://teamtracker.riverway.in"></div> -->
-    <span>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <div class="g-plus" data-action="share" data-height="24" data-href="https://teamtracker.riverway.in"></div>
+<body>
+	<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i> +91 8095746567</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> info@RiverWay.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="/login"><i class="fa fa-sign-out">Logout</i></a></li>  
+                            </ul>
+                         
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+	<section>
             
-            <div class="fb-share-button" data-href="https://teamtracker.riverway.in" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteamtracker.riverway.in%2F&amp;src=sdkpreparse">Share</a></div>
+            <main ui-view></main>
             
-        </span>
-    <!-- main -->
-    <main ui-view></main>
-
-    <!-- footer -->
-    <footer></footer>
-
-    <!-- external scripts -->
+    </section>
+	</header><!--/header-->
+	
+	
+	
+	<footer id="footer"><!--Footer-->
+		
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © RiverWay Inc. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -52,9 +77,5 @@
     <script src="app.js"></script>
     <script src="app-services/user.service.js"></script>
     <script src="home/index.controller.js"></script>
-
-    <script>
-
-    </script
 </body>
 </html>

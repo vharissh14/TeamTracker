@@ -1,12 +1,13 @@
 ﻿require('rootpath')();
 var express = require('express');
-// var redis = require("redis");
-// var subscriber = redis.createClient(6379,'192.168.1.5');
-// var publisher = redis.createClient(6379,'192.168.1.5');
+ var redis = require("redis");
+//  var subscriber = redis.createClient(6379,'redis');
+//  var publisher = redis.createClient(6379,'redis');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
@@ -14,7 +15,22 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
+
+var store = new MongoDBStore(
+    {
+      uri: config.connectionString,
+      collection: config.db.session
+    });
+  store.on('error', function(error) {
+    assert.ifError(error);
+    assert.ok(false);
+  });
+  app.use(session({
+    secret: config.secret,
+    store: store,
+    resave: true,
+    saveUninitialized: true
+  }));
 
 // use JWT auth to secure the api
 app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register', '/api/users/teamDetails', '/api/users/team', '/api/users/team1'] }));

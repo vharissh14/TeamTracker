@@ -5,6 +5,7 @@
   "dependencies": {
     "bcryptjs": "^2.1.0",
     "body-parser": "^1.13.2",
+    "connect-mongodb-session": "^1.4.0",
     "ejs": "^2.3.3",
     "express": "^4.13.0",
     "express-jwt": "^3.0.1",

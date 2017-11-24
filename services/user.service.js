@@ -12,7 +12,7 @@ service.get = get;
 
 service.create = create;
 service.teamDetails = teamDetails;
-service.delete = _delete;
+// service.delete = _delete;
 module.exports = service;
 
 function authenticate(pseudoName, password, mission) {
@@ -125,18 +125,18 @@ function teamDetails(userParam) {
 
   return deferred.promise;
 }
-function _delete(pseudoName) {
-  var deferred = Q.defer();
-  mongoService.db.session.remove(
-    { pseudoName: mongo.helper.toObjectID(pseudoName) },
-    function (err) {
-      if (err) deferred.reject(err);
+// function _delete(pseudoName) {
+//   var deferred = Q.defer();
+//   mongoService.db.session.remove(
+//     { pseudoName: mongo.helper.toObjectID(pseudoName) },
+//     function (err) {
+//       if (err) deferred.reject(err);
 
-      deferred.resolve();
-    });
+//       deferred.resolve();
+//     });
 
-  return deferred.promise;
-}
+//   return deferred.promise;
+// }
 
 
 // var userData={};

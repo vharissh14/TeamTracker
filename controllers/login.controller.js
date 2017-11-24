@@ -12,15 +12,15 @@ router.get('/', function (req, res) {
   delete req.session.success;
 
   res.render('login');
-  if(req.session.pseudoName){
-    userService.delete(req.session.pseudoName)
-    .then(function () {
-      res.sendStatus(200);
-    })
-    .catch(function (err) {
-      res.status(400).send(err);
-    });
-  }
+  // if(req.session.pseudoName){
+  //   userService.delete(req.session.pseudoName)
+  //   .then(function () {
+  //     res.sendStatus(200);
+  //   })
+  //   .catch(function (err) {
+  //     res.status(400).send(err);
+  //   });
+  // }
 });
 
 router.post('/', function (req, res) {

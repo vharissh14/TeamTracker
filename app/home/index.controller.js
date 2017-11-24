@@ -12,35 +12,11 @@
     var socket = io.connect();
     function getMission() {
       UserService.GetCurrentMission().then(function (mission) {
+        $scope.mission=mission.mission;
         room = mission.mission;
       });
     }
     function getCurrentUser() {
-    //   function hasUserMedia() { 
-    //     //check if the browser supports the WebRTC 
-    //     return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || 
-    //        navigator.mozGetUserMedia); 
-    //  } 
-     
-    //  if (hasUserMedia()) { 
-    //     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
-    //        || navigator.mozGetUserMedia; 
-         
-    //     //enabling video and audio channels 
-    //     navigator.getUserMedia({ video: true, audio: true }, function (stream) { 
-    //        var video = document.querySelector('video'); 
-         
-    //        //inserting our stream to the video tag     
-    //        video.src = window.URL.createObjectURL(stream); 
-    //     }, function (err) {}); 
-    //  } else { 
-    //     alert("WebRTC is not supported"); 
-    //  }
-
-
-
-
-     
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (pos) {
           myLatLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
@@ -55,7 +31,7 @@
             user.lat = myLatLng;
             user.mission = room;
             socket.emit('subscribe', user);
-            setInterval(getNewCords, 1000);
+            setInterval(getNewCords, 5000);
           });
           var infowindow = new google.maps.InfoWindow();
 
@@ -129,31 +105,44 @@
       }
 
     }
-    var watchID;
+    // var watchID;
+    // function getNewCords() {
+    //   function showLocation(position) {
+    //     var latitude = position.coords.latitude;
+    //     var longitude = position.coords.longitude;
+    //     var myLatLng={};
+    //     myLatLng.lat=latitude;
+    //     myLatLng.lng=longitude;
+    //     var userObj = {}
+    //     userObj.lat = myLatLng;
+    //     userObj.pseudoName = currentUser.pseudoName
+    //     socket.emit('locationChanged', userObj);
+    //     socket.on('locationUpdate', function (user) {
+    //       console.log(angular.toJson(user))
+    //       var position = new google.maps.LatLng(user.lat.lat, user.lat.lng);
+    //       marker[user.pseudoName].setPosition(position);
+    //     });
+    //  }
+     
+    //     if(navigator.geolocation){
+    //        watchID = navigator.geolocation.watchPosition(showLocation);
+    //    }
+       
+    // }
     function getNewCords() {
-      function showLocation(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var myLatLng={};
-        myLatLng.lat=latitude;
-        myLatLng.lng=longitude;
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         var userObj = {}
         userObj.lat = myLatLng;
         userObj.pseudoName = currentUser.pseudoName
         socket.emit('locationChanged', userObj);
         socket.on('locationUpdate', function (user) {
-          console.log(angular.toJson(user))
+          console.log("newLocation :" + Date() + " : " + angular.toJson(user))
           var position = new google.maps.LatLng(user.lat.lat, user.lat.lng);
           marker[user.pseudoName].setPosition(position);
         });
-     }
-     
-        if(navigator.geolocation){
-           watchID = navigator.geolocation.watchPosition(showLocation);
-       }
-       
+      });
     }
-
 
   }]);
 
