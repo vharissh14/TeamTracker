@@ -1,8 +1,8 @@
 ﻿require('rootpath')();
 var express = require('express');
  var redis = require("redis");
-//  var subscriber = redis.createClient(6379,'redis');
-//  var publisher = redis.createClient(6379,'redis');
+  var subscriber = redis.createClient(6379,'redis');
+  var publisher = redis.createClient(6379,'redis');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);

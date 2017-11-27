@@ -86,7 +86,6 @@ function create(userParam) {
     { pseudoName: userParam.pseudoName },
     function (err, user) {
       if (err) deferred.reject(err.name + ': ' + err.message);
-
       if (user) {
         // pseudoName already exists
         deferred.reject('pseudoName "' + userParam.pseudoName + '" is already taken');
@@ -107,7 +106,7 @@ function create(userParam) {
       function (err, doc) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        deferred.resolve();
+        deferred.resolve("200");
       });
   }
 

@@ -32,7 +32,7 @@ function authenticateUser(req, res) {
 function registerUser(req, res) {
   // console.log("reg :"+JSON.stringify(req.body))
   userService.create(req.body)
-  .then(function () {
+  .then(function (usr) {
     res.sendStatus(200);
   })
   .catch(function (err) {
