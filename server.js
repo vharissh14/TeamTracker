@@ -77,11 +77,11 @@ io.sockets.on('connection', function (socket) {
             }
         }
         console.log("data :"+JSON.stringify(roomUsers))
-        // publisher.publish("example", roomUsers);
-        // subscriber.on("message", function(channel, message) {
-        //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
-        //   });
-        //   subscriber.subscribe("examplerep");
+        publisher.publish("example", roomUsers);
+        subscriber.on("message", function(channel, message) {
+            console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
+          });
+          subscriber.subscribe("examplerep");
         console.log("users :" + JSON.stringify(roomUsers))
         io.sockets.to(data.mission).emit('userList', roomUsers);
     })
