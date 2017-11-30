@@ -4,7 +4,7 @@ var express = require('express');
  // var subscriber = redis.createClient(6379,'redis');
   // var publisher = redis.createClient(6379,'redis');
   var redis = new ioredis({
-      sentinels: [{host: 'redis', port: 26379}],
+      sentinels: [{host: 'redis-sentinel', port: 26379}],
       name: 'mymaster'
   });
 var app = express();
