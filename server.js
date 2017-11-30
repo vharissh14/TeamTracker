@@ -83,7 +83,7 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("data :"+JSON.stringify(roomUsers))
         var count = redis.incrby("manojc",1)
-        redis.zadd("manoj",count,count)
+        redis.zadd("manoj",parseFloat(count),count)
         console.log("count :"+count)
         // publisher.publish("example", roomUsers);
         // subscriber.on("message", function(channel, message) {
