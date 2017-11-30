@@ -82,9 +82,13 @@ io.sockets.on('connection', function (socket) {
             }
         }
         console.log("data :"+JSON.stringify(roomUsers))
-        var count = redis.incrby("manojc",1)
-        redis.zadd("manoj",parseFloat(count),count)
-        console.log("count :"+JSON.stringify(count))
+        redis.incrby("manojc","1")
+        redis.get('manojc', function(error, result) {
+            if (error) console.log('Error: '+ error);
+            else {
+        console.log('Name: ' + result);
+        redis.zadd("node",result,result)
+        }});
         // publisher.publish("example", roomUsers);
         // subscriber.on("message", function(channel, message) {
         //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
