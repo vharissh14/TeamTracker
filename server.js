@@ -4,9 +4,9 @@ var express = require('express');
  // var subscriber = redis.createClient(6379,'redis');
   // var publisher = redis.createClient(6379,'redis');
   var redis = new ioredis({
-      sentinels: [{host: 'redis', port: 6379}],
-      name: 'mymaster'
-  });
+    port:6379,
+    host:"redis"
+});
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
