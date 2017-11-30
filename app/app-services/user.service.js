@@ -15,6 +15,9 @@
     function GetCurrentMission() {
       return $http.get('/app/token').then(handleSuccess, handleError);
     }
+    function GetCurrentMission() {
+      return $http.get('/app/token').then(handleSuccess, handleError);
+    }
     function handleSuccess(res) {
       return res.data;
     }
