@@ -1,8 +1,12 @@
 ﻿require('rootpath')();
 var express = require('express');
- var redis = require("redis");
-  var subscriber = redis.createClient(6379,'redis');
-   var publisher = redis.createClient(6379,'redis');
+ var ioredis = require("ioredis");
+ // var subscriber = redis.createClient(6379,'redis');
+  // var publisher = redis.createClient(6379,'redis');
+  var redis = new ioredis({
+      sentinels: [{host: 'sentinel', port: 26379}],
+      name: 'mymaster'
+  });
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -74,15 +78,18 @@ io.sockets.on('connection', function (socket) {
         for (var i = 0; i < userList.length; i++) {
             if (userList[i].mission == data.mission) {
                 roomUsers.push(userList[i])
+               
             }
         }
         console.log("data :"+JSON.stringify(roomUsers))
-        publisher.publish("example", roomUsers);
-        subscriber.on("message", function(channel, message) {
-            console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
-          });
-          subscriber.subscribe("examplerep");
-        console.log("users :" + JSON.stringify(roomUsers))
+        var count = redis.incrby("manoj",1)
+        redis.zadd("manoj",count,roomUsers)
+        // publisher.publish("example", roomUsers);
+        // subscriber.on("message", function(channel, message) {
+        //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
+        //   });
+        //   subscriber.subscribe("examplerep");
+        // console.log("users :" + JSON.stringify(roomUsers))
         io.sockets.to(data.mission).emit('userList', roomUsers);
     })
     socket.on('disconnect', function () {
