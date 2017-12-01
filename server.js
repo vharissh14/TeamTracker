@@ -84,7 +84,7 @@ io.sockets.on('connection', function (socket) {
             }
         }
         console.log("data :"+JSON.stringify(roomUsers))
-        var redis = new Redis({sentinels: [{host:'redis',port:26379}],name: 'mymaster'});
+        var redis = new ioredis({sentinels: [{host:'redis',port:26379}],name: 'mymaster'});
         redis.incrby("manojc","1")
         redis.get('manojc', function(error, result) {
             if (error) console.log('Error: '+ error);
