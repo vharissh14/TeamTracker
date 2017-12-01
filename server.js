@@ -3,10 +3,12 @@ var express = require('express');
  var ioredis = require("ioredis");
  // var subscriber = redis.createClient(6379,'redis');
   // var publisher = redis.createClient(6379,'redis');
-  var redis = new ioredis({
-    port:6379,
-    host:"redis"
-});
+//   var redis = new ioredis({
+//     port:6379,
+//     host:"redis"
+// });
+
+
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -82,13 +84,21 @@ io.sockets.on('connection', function (socket) {
             }
         }
         console.log("data :"+JSON.stringify(roomUsers))
+        var redis = new Redis({sentinels: [{host:'redis',port:26379}],name: 'mymaster'});
         redis.incrby("manojc","1")
         redis.get('manojc', function(error, result) {
             if (error) console.log('Error: '+ error);
             else {
         console.log('Name: ' + result);
-        redis.zadd("node",result,result)
+        redis.zadd("node",result,"hello")
         }});
+        // redis.incrby("manojc","1")
+        // redis.get('manojc', function(error, result) {
+        //     if (error) console.log('Error: '+ error);
+        //     else {
+        // console.log('Name: ' + result);
+        // redis.zadd("node",result,result)
+        // }});
         // publisher.publish("example", roomUsers);
         // subscriber.on("message", function(channel, message) {
         //     console.log("Message '" + message + "' on channel '" + channel + "' arrived!")
