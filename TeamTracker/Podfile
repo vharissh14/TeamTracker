@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '9.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+target 'TeamTracker' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TeamTracker
+	pod 'Socket.IO-Client-Swift', '~> 12.1.2' # Or latest version
+
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKShareKit'
+	pod 'FBSDKLoginKit'
+
+	pod 'Google/SignIn'
+
+ # Pods for GoogleMapIntegrationDemo
+
+  	pod 'GoogleMaps'
+  	pod 'GooglePlaces'
+
+end

@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		24980F08C806CA5CB67B849E /* Pods_GoogleMapIntegrationDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62CEB3879057FDE1E75EDFD4 /* Pods_GoogleMapIntegrationDemo.framework */; };
+		560234F51FDA9475008BD38F /* ARDWebSocketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234E41FDA9472008BD38F /* ARDWebSocketChannel.m */; };
+		560234F61FDA9475008BD38F /* ARDRegisterResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234E61FDA9473008BD38F /* ARDRegisterResponse.m */; };
+		560234F71FDA9475008BD38F /* ARDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234E71FDA9473008BD38F /* ARDUtilities.m */; };
+		560234F81FDA9475008BD38F /* RTCICEServer+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234EB1FDA9473008BD38F /* RTCICEServer+JSON.m */; };
+		560234F91FDA9475008BD38F /* RTCICECandidate+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234ED1FDA9474008BD38F /* RTCICECandidate+JSON.m */; };
+		560234FA1FDA9475008BD38F /* ARDSignalingMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234EF1FDA9474008BD38F /* ARDSignalingMessage.m */; };
+		560234FB1FDA9475008BD38F /* ARDMessageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234F01FDA9474008BD38F /* ARDMessageResponse.m */; };
+		560234FC1FDA9475008BD38F /* RTCSessionDescription+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234F11FDA9474008BD38F /* RTCSessionDescription+JSON.m */; };
+		560234FD1FDA9475008BD38F /* RTCMediaConstraints+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234F31FDA9475008BD38F /* RTCMediaConstraints+JSON.m */; };
+		560234FE1FDA9475008BD38F /* ARDAppClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 560234F41FDA9475008BD38F /* ARDAppClient.m */; };
+		569203B11FA1FB7C005704DE /* CustomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569203B01FA1FB7C005704DE /* CustomInfoView.swift */; };
+		56E064931F99B4E400E9193D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E064921F99B4E400E9193D /* AppDelegate.swift */; };
+		56E064951F99B4E400E9193D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E064941F99B4E400E9193D /* ViewController.swift */; };
+		56E064981F99B4E400E9193D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E064961F99B4E400E9193D /* Main.storyboard */; };
+		56E0649A1F99B4E400E9193D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56E064991F99B4E400E9193D /* Assets.xcassets */; };
+		56E0649D1F99B4E400E9193D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E0649B1F99B4E400E9193D /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2AA16472D0441A2434D88C39 /* Pods-GoogleMapIntegrationDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapIntegrationDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapIntegrationDemo/Pods-GoogleMapIntegrationDemo.release.xcconfig"; sourceTree = "<group>"; };
+		560234E01FDA9471008BD38F /* GoogleMapIntegrationDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoogleMapIntegrationDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		560234E11FDA9472008BD38F /* RTCICECandidate+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCICECandidate+JSON.h"; sourceTree = "<group>"; };
+		560234E21FDA9472008BD38F /* RTCICEServer+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCICEServer+JSON.h"; sourceTree = "<group>"; };
+		560234E31FDA9472008BD38F /* ARDRegisterResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDRegisterResponse.h; sourceTree = "<group>"; };
+		560234E41FDA9472008BD38F /* ARDWebSocketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDWebSocketChannel.m; sourceTree = "<group>"; };
+		560234E51FDA9473008BD38F /* ARDAppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppClient.h; sourceTree = "<group>"; };
+		560234E61FDA9473008BD38F /* ARDRegisterResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDRegisterResponse.m; sourceTree = "<group>"; };
+		560234E71FDA9473008BD38F /* ARDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDUtilities.m; sourceTree = "<group>"; };
+		560234E81FDA9473008BD38F /* ARDWebSocketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDWebSocketChannel.h; sourceTree = "<group>"; };
+		560234E91FDA9473008BD38F /* ARDSignalingMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSignalingMessage.h; sourceTree = "<group>"; };
+		560234EA1FDA9473008BD38F /* ARDMessageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMessageResponse.h; sourceTree = "<group>"; };
+		560234EB1FDA9473008BD38F /* RTCICEServer+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCICEServer+JSON.m"; sourceTree = "<group>"; };
+		560234EC1FDA9473008BD38F /* RTCMediaConstraints+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCMediaConstraints+JSON.h"; sourceTree = "<group>"; };
+		560234ED1FDA9474008BD38F /* RTCICECandidate+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCICECandidate+JSON.m"; sourceTree = "<group>"; };
+		560234EE1FDA9474008BD38F /* RTCSessionDescription+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCSessionDescription+JSON.h"; sourceTree = "<group>"; };
+		560234EF1FDA9474008BD38F /* ARDSignalingMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSignalingMessage.m; sourceTree = "<group>"; };
+		560234F01FDA9474008BD38F /* ARDMessageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMessageResponse.m; sourceTree = "<group>"; };
+		560234F11FDA9474008BD38F /* RTCSessionDescription+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCSessionDescription+JSON.m"; sourceTree = "<group>"; };
+		560234F21FDA9474008BD38F /* ARDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDUtilities.h; sourceTree = "<group>"; };
+		560234F31FDA9475008BD38F /* RTCMediaConstraints+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCMediaConstraints+JSON.m"; sourceTree = "<group>"; };
+		560234F41FDA9475008BD38F /* ARDAppClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDAppClient.m; sourceTree = "<group>"; };
+		569203B01FA1FB7C005704DE /* CustomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoView.swift; sourceTree = "<group>"; };
+		56E0648F1F99B4E400E9193D /* GoogleMapIntegrationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMapIntegrationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56E064921F99B4E400E9193D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		56E064941F99B4E400E9193D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		56E064971F99B4E400E9193D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		56E064991F99B4E400E9193D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		56E0649C1F99B4E400E9193D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		56E0649E1F99B4E400E9193D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62CEB3879057FDE1E75EDFD4 /* Pods_GoogleMapIntegrationDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapIntegrationDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		836C1C84FE18E391A0633822 /* Pods-GoogleMapIntegrationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapIntegrationDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapIntegrationDemo/Pods-GoogleMapIntegrationDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		56E0648C1F99B4E400E9193D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24980F08C806CA5CB67B849E /* Pods_GoogleMapIntegrationDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		560234DE1FDA9437008BD38F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				560234DF1FDA9454008BD38F /* AppRTC */,
+			);
+			name = Library;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		560234DF1FDA9454008BD38F /* AppRTC */ = {
+			isa = PBXGroup;
+			children = (
+				560234E51FDA9473008BD38F /* ARDAppClient.h */,
+				560234F41FDA9475008BD38F /* ARDAppClient.m */,
+				560234EA1FDA9473008BD38F /* ARDMessageResponse.h */,
+				560234F01FDA9474008BD38F /* ARDMessageResponse.m */,
+				560234E31FDA9472008BD38F /* ARDRegisterResponse.h */,
+				560234E61FDA9473008BD38F /* ARDRegisterResponse.m */,
+				560234E91FDA9473008BD38F /* ARDSignalingMessage.h */,
+				560234EF1FDA9474008BD38F /* ARDSignalingMessage.m */,
+				560234F21FDA9474008BD38F /* ARDUtilities.h */,
+				560234E71FDA9473008BD38F /* ARDUtilities.m */,
+				560234E81FDA9473008BD38F /* ARDWebSocketChannel.h */,
+				560234E41FDA9472008BD38F /* ARDWebSocketChannel.m */,
+				560234E11FDA9472008BD38F /* RTCICECandidate+JSON.h */,
+				560234ED1FDA9474008BD38F /* RTCICECandidate+JSON.m */,
+				560234E21FDA9472008BD38F /* RTCICEServer+JSON.h */,
+				560234EB1FDA9473008BD38F /* RTCICEServer+JSON.m */,
+				560234EC1FDA9473008BD38F /* RTCMediaConstraints+JSON.h */,
+				560234F31FDA9475008BD38F /* RTCMediaConstraints+JSON.m */,
+				560234EE1FDA9474008BD38F /* RTCSessionDescription+JSON.h */,
+				560234F11FDA9474008BD38F /* RTCSessionDescription+JSON.m */,
+				560234E01FDA9471008BD38F /* GoogleMapIntegrationDemo-Bridging-Header.h */,
+			);
+			path = AppRTC;
+			sourceTree = "<group>";
+		};
+		56E064861F99B4E400E9193D = {
+			isa = PBXGroup;
+			children = (
+				56E064911F99B4E400E9193D /* GoogleMapIntegrationDemo */,
+				56E064901F99B4E400E9193D /* Products */,
+				9069DB2A2902CCADF436E965 /* Pods */,
+				E0352A9260C52AF6DBDC5B97 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		56E064901F99B4E400E9193D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				56E0648F1F99B4E400E9193D /* GoogleMapIntegrationDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		56E064911F99B4E400E9193D /* GoogleMapIntegrationDemo */ = {
+			isa = PBXGroup;
+			children = (
+				560234DE1FDA9437008BD38F /* Library */,
+				56E064921F99B4E400E9193D /* AppDelegate.swift */,
+				56E064941F99B4E400E9193D /* ViewController.swift */,
+				569203B01FA1FB7C005704DE /* CustomInfoView.swift */,
+				56E064961F99B4E400E9193D /* Main.storyboard */,
+				56E064991F99B4E400E9193D /* Assets.xcassets */,
+				56E0649B1F99B4E400E9193D /* LaunchScreen.storyboard */,
+				56E0649E1F99B4E400E9193D /* Info.plist */,
+			);
+			path = GoogleMapIntegrationDemo;
+			sourceTree = "<group>";
+		};
+		9069DB2A2902CCADF436E965 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				836C1C84FE18E391A0633822 /* Pods-GoogleMapIntegrationDemo.debug.xcconfig */,
+				2AA16472D0441A2434D88C39 /* Pods-GoogleMapIntegrationDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E0352A9260C52AF6DBDC5B97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62CEB3879057FDE1E75EDFD4 /* Pods_GoogleMapIntegrationDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		56E0648E1F99B4E400E9193D /* GoogleMapIntegrationDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56E064A11F99B4E400E9193D /* Build configuration list for PBXNativeTarget "GoogleMapIntegrationDemo" */;
+			buildPhases = (
+				C3C71500B65184D5325091A0 /* [CP] Check Pods Manifest.lock */,
+				56E0648B1F99B4E400E9193D /* Sources */,
+				56E0648C1F99B4E400E9193D /* Frameworks */,
+				56E0648D1F99B4E400E9193D /* Resources */,
+				6A10C0413F2C0CCEF518DD24 /* [CP] Embed Pods Frameworks */,
+				21DCCC276275AF53FF0C0A49 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoogleMapIntegrationDemo;
+			productName = GoogleMapIntegrationDemo;
+			productReference = 56E0648F1F99B4E400E9193D /* GoogleMapIntegrationDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		56E064871F99B4E400E9193D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Astro1;
+				TargetAttributes = {
+					56E0648E1F99B4E400E9193D = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 56E0648A1F99B4E400E9193D /* Build configuration list for PBXProject "GoogleMapIntegrationDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 56E064861F99B4E400E9193D;
+			productRefGroup = 56E064901F99B4E400E9193D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				56E0648E1F99B4E400E9193D /* GoogleMapIntegrationDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		56E0648D1F99B4E400E9193D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56E0649D1F99B4E400E9193D /* LaunchScreen.storyboard in Resources */,
+				56E0649A1F99B4E400E9193D /* Assets.xcassets in Resources */,
+				56E064981F99B4E400E9193D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21DCCC276275AF53FF0C0A49 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapIntegrationDemo/Pods-GoogleMapIntegrationDemo-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapIntegrationDemo/Pods-GoogleMapIntegrationDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A10C0413F2C0CCEF518DD24 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapIntegrationDemo/Pods-GoogleMapIntegrationDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapIntegrationDemo/Pods-GoogleMapIntegrationDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3C71500B65184D5325091A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoogleMapIntegrationDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		56E0648B1F99B4E400E9193D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				560234F61FDA9475008BD38F /* ARDRegisterResponse.m in Sources */,
+				560234FA1FDA9475008BD38F /* ARDSignalingMessage.m in Sources */,
+				569203B11FA1FB7C005704DE /* CustomInfoView.swift in Sources */,
+				56E064951F99B4E400E9193D /* ViewController.swift in Sources */,
+				560234FE1FDA9475008BD38F /* ARDAppClient.m in Sources */,
+				560234FB1FDA9475008BD38F /* ARDMessageResponse.m in Sources */,
+				560234FC1FDA9475008BD38F /* RTCSessionDescription+JSON.m in Sources */,
+				56E064931F99B4E400E9193D /* AppDelegate.swift in Sources */,
+				560234F81FDA9475008BD38F /* RTCICEServer+JSON.m in Sources */,
+				560234F91FDA9475008BD38F /* RTCICECandidate+JSON.m in Sources */,
+				560234F71FDA9475008BD38F /* ARDUtilities.m in Sources */,
+				560234F51FDA9475008BD38F /* ARDWebSocketChannel.m in Sources */,
+				560234FD1FDA9475008BD38F /* RTCMediaConstraints+JSON.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		56E064961F99B4E400E9193D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56E064971F99B4E400E9193D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		56E0649B1F99B4E400E9193D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56E0649C1F99B4E400E9193D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		56E0649F1F99B4E400E9193D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		56E064A01F99B4E400E9193D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		56E064A21F99B4E400E9193D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 836C1C84FE18E391A0633822 /* Pods-GoogleMapIntegrationDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoogleMapIntegrationDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Astro1.GoogleMapIntegrationDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoogleMapIntegrationDemo/New Group/AppRTC/GoogleMapIntegrationDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		56E064A31F99B4E400E9193D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AA16472D0441A2434D88C39 /* Pods-GoogleMapIntegrationDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoogleMapIntegrationDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Astro1.GoogleMapIntegrationDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoogleMapIntegrationDemo/New Group/AppRTC/GoogleMapIntegrationDemo-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		56E0648A1F99B4E400E9193D /* Build configuration list for PBXProject "GoogleMapIntegrationDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56E0649F1F99B4E400E9193D /* Debug */,
+				56E064A01F99B4E400E9193D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56E064A11F99B4E400E9193D /* Build configuration list for PBXNativeTarget "GoogleMapIntegrationDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56E064A21F99B4E400E9193D /* Debug */,
+				56E064A31F99B4E400E9193D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 56E064871F99B4E400E9193D /* Project object */;
+}
