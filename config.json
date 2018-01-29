@@ -1,5 +1,5 @@
 ﻿{
-    "connectionString": "mongodb://mongo:27017/TeamTracker",
+    "connectionString": "mongodb://mongo-0.mongo:27017,mongo-1.mongo:27017/TeamTracker",
     "apiUrl": "http://localhost:3000/api",
     "secret": "elpis",
     "db":{
